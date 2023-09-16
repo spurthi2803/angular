@@ -1,0 +1,110 @@
+<h1>{{title}}</h1>
+<br /> <br/>
+<h1> Property binding</h1>
+<input type="text" name="user-name" value={{name}} disabled={{disable}} >
+<br /> <br/>
+<input type="text" name="user-name" [value]=name [disabled]=disable>
+<br /> <br/>
+<h1> Style binding</h1>
+
+<h2 [style.color]="color">{{title}}</h2>
+<button (click)="updateColor()">updateColor</button>
+
+<br /> <br/>
+<h1> Creating a form</h1>
+
+<form #BasicForm="ngForm" (submit)="getData(BasicForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter user name"/>
+    <br /> <br/>
+    <input type="text" ngModel name="email" placeholder="Enter user email"/>
+    <br /> <br/>
+    <input type="text" ngModel name="password" placeholder="Enter user password"/>
+    <br /> <br/>
+    <button type="submit">Register </button>
+</form>
+<br /> <br/>
+<h1> Toggle element on button</h1>
+<button (click)="toggle()">toggle</button>
+
+<h1 *ngIf="display">Click the above to see the change</h1>
+<br /> <br/>
+<h1> Two way binding</h1>
+city:<input type="text"[(ngModel)]="city">
+<p>{{city}}</p>
+<button (click)="updateCity()">update</button>
+<br /> <br/>
+<h1> class binding</h1>
+<h1 [class.active]=isactive>This is spurthi</h1>
+<br /> <br/>
+<h1> event binding</h1>
+<button (click)="increement()">click</button>
+<h1>Counter: {{counter}}</h1>
+<br /> <br/>
+<h1> ngif condition</h1>
+<div *ngIf="showContent">
+<div *ngIf="showContent; else elseBlock">
+    <p>This content will be displayed if showContent is true.</p>
+  </div>
+  <ng-template #elseBlock>
+    <p>This content will be displayed if showContent is false.</p>
+  </ng-template>
+  <br /> <br/>
+<h1> ngfor loop </h1>
+  <div>
+    <!-- Using *ngFor directive -->
+    <ul>
+      <li *ngFor="let item of items; let i = index;">
+        {{ i + 1 }}. {{ item }}
+      </li>
+    </ul>
+  </div>
+  <br /> <br/>
+  <h1> ngSwitch </h1>
+  <div>
+    <h1>Select a day of the week:</h1>
+    <select [(ngModel)]="selectedDay">
+      <option value="monday">Monday</option>
+      <option value="tuesday">Tuesday</option>
+      <option value="wednesday">Wednesday</option>
+      <option value="thursday">Thursday</option>
+      <option value="friday">Friday</option>
+      <option value="saturday">Saturday</option>
+      <option value="sunday">Sunday</option>
+    </select>
+  
+    <div [ngSwitch]="selectedDay">
+      <div *ngSwitchCase="'monday'">It's Monday, get ready for the week!</div>
+      <div *ngSwitchCase="'tuesday'">Happy Tuesday!</div>
+      <div *ngSwitchCase="'wednesday'">Hump day!</div>
+      <div *ngSwitchCase="'thursday'">Almost there, it's Thursday.</div>
+      <div *ngSwitchCase="'friday'">Weekend is near, it's Friday!</div>
+      <div *ngSwitchCase="'saturday'">Enjoy your Saturday!</div>
+      <div *ngSwitchCase="'sunday'">Lazy Sunday vibes.</div>
+      <div *ngSwitchDefault>Invalid day selected.</div>
+    </div>
+  </div>
+  <br /> <br/>
+  <h1> Template reference variable </h1>
+  <input type="text" #box placeholder="enter name">
+  <button (click)="getVal(box)">click Me</button>
+  <app-todolist></app-todolist>
+  <br /> <br/>
+  <h1> pipes in angular </h1>
+ <h1>{{ title | uppercase}}</h1>
+ <h1>{{ title | lowercase}}</h1>
+ <h1>{{ title | slice:3:8}}</h1>
+ <h1>{{user | json}}</h1>
+ <h1>{{100 | currency : 'INR'}}</h1>
+ <br /> <br/>
+ <h1> component interaction </h1>
+ <h1>Parent Component</h1>
+<p>Parent Data: {{ parentData.hero }} - {{ parentData.age }}</p>
+<app-todolist [childData]="parentData" (dataChanged)="onDataChange($event)"></app-todolist>
+
+<div #test>this is div </div>
+<button (click)="changediv()">click</button>
+<app-toggle-paragraph></app-toggle-paragraph>
+
+
+    
+ 
